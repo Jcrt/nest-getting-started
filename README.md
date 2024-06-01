@@ -26,6 +26,12 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## Packages used in this project (so far)
+- [Prisma](https://www.prisma.io/?via=start&gad_source=1&gclid=CjwKCAjwjeuyBhBuEiwAJ3vuoezRjqb6S2-aVUJCCaY-6COp6Rpj1Bb3Z2IfNQgvLMyats_Ycv5cQxoCZTEQAvD_BwE) - A powerful ORM to manage our database
+- [Class Transformer](https://www.npmjs.com/package/@nestjs/class-transformer) Easily parse plain objects to your desired classes, and in this project (for a while) it's only have been used in controllers, when we receive a request body and automatically cast it to DTOs.
+- [Class Validator](https://www.npmjs.com/package/@nestjs/class-validator) Allow us to use validator decorators to validate our data using class structure, similar to the data annotations in C#
+- [Argon]() Alow us to hash strings and it's being used to hash our password so far.
+
 ## Installation
 
 ```bash
