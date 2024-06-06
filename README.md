@@ -33,8 +33,12 @@
 ## Packages used in this project (so far)
 - [Prisma](https://www.prisma.io/?via=start&gad_source=1&gclid=CjwKCAjwjeuyBhBuEiwAJ3vuoezRjqb6S2-aVUJCCaY-6COp6Rpj1Bb3Z2IfNQgvLMyats_Ycv5cQxoCZTEQAvD_BwE) - A powerful ORM to manage our database
 - [Class Transformer](https://www.npmjs.com/package/@nestjs/class-transformer) Easily parse plain objects to your desired classes, and in this project (for a while) it's only have been used in controllers, when we receive a request body and automatically cast it to DTOs.
-- [Class Validator](https://www.npmjs.com/package/@nestjs/class-validator) Allow us to use validator decorators to validate our data using class structure, similar to the data annotations in C#
-- [Argon]() Alow us to hash strings and it's being used to hash our password so far.
+- [Class Validator](https://www.npmjs.com/package/@nestjs/class-validator) Allows us to use validator decorators to validate our data using class structure, similar to the data annotations in C#
+- [Argon](https://github.com/ranisalt/node-argon2#readme) Allows us to hash strings and it's being used to hash our password so far.
+- [@Nestjs/config](https://docs.nestjs.com/techniques/configuration) Provides a useful way to read and get informations from .env file in application.
+- [@Nestjs/passport](https://docs.nestjs.com/recipes/passport) Provides a easy way to work with JWT (but not only this type of authentication) in your application.
+- [Pactum js](https://pactumjs.github.io/) Offers a easy way to build and run e2e tests in your application.
+- [dotenv-cli](https://www.npmjs.com/package/dotenv-cli) Swap between different envs in your project just by running commands.
 
 ## Installation
 

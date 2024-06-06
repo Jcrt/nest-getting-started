@@ -1,4 +1,3 @@
--- CreateTable
 CREATE TABLE "User" (
     "id" SERIAL NOT NULL,
     "firstName" VARCHAR(30) NOT NULL,

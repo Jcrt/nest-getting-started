@@ -6,14 +6,30 @@ services:
       - d:/docker/postgres-14.3:/mnt/host
     container_name: postgres-container
     environment:
+      POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
+      POSTGRES_DB: nest-getting-started
     ports: 
       - 5432:5432
 
     networks:
       - nest-getting-started
-    # set shared memory limit when using docker-compose
-    #shm_size: 128mb
+   
+  test-db:
+    image: postgres-image
+    restart: always
+    volumes: 
+      - d:/docker/postgres-14.3/test:/mnt/host
+    container_name: postgres-container-test
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin
+      POSTGRES_DB: nest-getting-started
+    ports: 
+      - 5434:5432
+
+    networks:
+      - nest-getting-started
 
   adminer:
     container_name: postgres-adminer
