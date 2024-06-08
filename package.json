@@ -8,12 +8,14 @@
   "scripts": {
     "db:dev:rm": "docker compose rm db -s -f -v",
     "db:dev:up": "docker compose up -d db --force-recreate",
+    "db:dev:start": "docker compose up -d",
     "db:dev:restart": "npm run db:dev:rm && npm run db:dev:up && npm run prisma:dev:deploy",
     "prisma:dev:deploy": "npx prisma migrate deploy",
     "prisma:dev:studio": "npx prisma studio --port 3000",
 
     "db:e2e:rm": "docker compose rm test-db -s -f -v",
     "db:e2e:up": "docker compose up -d test-db --force-recreate",
+    "db:e2e:start": "docker compose up -d",
     "db:e2e:restart": "npm run db:e2e:rm && npm run db:e2e:up && npm run prisma:e2e:deploy",
     "prisma:e2e:deploy": "dotenv -e .env.test -- npx prisma migrate deploy",
     "prisma:e2e:studio": "dotenv -e .env.test -- npx prisma studio --port 3000",

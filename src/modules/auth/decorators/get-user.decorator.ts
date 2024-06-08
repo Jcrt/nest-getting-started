@@ -4,7 +4,7 @@ import { User } from '@prisma/client';
 export const GetUser = createParamDecorator(
   (propertyFilter: string | string[] | undefined, ctx: ExecutionContext): User | { [key: string] : any } => {
     const request = ctx.switchToHttp().getRequest();
-    let userProperties: User | { [key: string] : string};
+    let userProperties: User | { [key: string] : string} | any;
 
     if(!propertyFilter){
       userProperties = request.user;
@@ -14,9 +14,7 @@ export const GetUser = createParamDecorator(
         userProperties[x] = request.user[x];
       });
     } else{
-      userProperties = { 
-        [propertyFilter]: request.user[propertyFilter]
-      };
+      userProperties = request.user[propertyFilter];
     }
    
     return userProperties;
