@@ -14,26 +14,30 @@ datasource db {
 }
 
 model User {
-  id          Int           @id @default(autoincrement())
-  firstName   String        @db.VarChar(30)
-  lastName    String        @db.VarChar(30)
-  email       String        @db.VarChar(30) @unique
-  hash        String        @db.VarChar(200)
-  createdAt   DateTime      @default(now())
-  updatedAt   DateTime      @updatedAt
-  active      Boolean       @default(true) @db.Boolean
-  UserProject UserProject[]
-}
-
-model UserProject {
-  id          Int  @id @default(autoincrement())
-  //I need to build relationships this way
-  user        User @relation(fields: [userId], references: [id])
-  type        Int
-  userId      Int
-  projectData Json @db.Json
+  id        Int      @id @default(autoincrement())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
+  firstName String  @db.VarChar(30)
+  lastName  String  @db.VarChar(30)
+  email     String  @unique @db.VarChar(30)
+  hash      String  @db.VarChar(200)
+  active    Boolean @default(true) @db.Boolean
+
+  UserProject Bookmark[]
+}
+
+model Bookmark {
+  id        Int      @id @default(autoincrement())
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  type        Int
+  userId      Int
+  projectData Json @db.Json
+
+  user User @relation(fields: [userId], references: [id])
+
   @@unique([type, userId])
+  @@map("Bookmark")
 }

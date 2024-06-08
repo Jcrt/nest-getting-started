@@ -1,5 +1,5 @@
-import { BasicSignInfo } from './basic-sign-info';
+import { BasicSignDto } from './basic-sign-info';
 
-export class SignInDto extends BasicSignInfo {
+export class SignInDto extends BasicSignDto {
 
 }

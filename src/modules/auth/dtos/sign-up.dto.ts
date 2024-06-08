@@ -1,7 +1,7 @@
 import { IsEmail, IsNotEmpty, IsString, MaxLength, MinLength } from 'class-validator';
-import { BasicSignInfo } from './basic-sign-info';
+import { BasicSignDto } from './basic-sign-info';
 
-export class SignUpDto extends BasicSignInfo{
+export class SignUpDto extends BasicSignDto{
   @IsNotEmpty()
   @IsString()
   @MinLength(2)
