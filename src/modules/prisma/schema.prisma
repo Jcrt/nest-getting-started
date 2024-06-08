@@ -33,11 +33,11 @@ model Bookmark {
   updatedAt DateTime @updatedAt
 
   type        Int
+  description String @db.VarChar(100)
   userId      Int
-  projectData Json @db.Json
+  data Json @db.Json
 
   user User @relation(fields: [userId], references: [id])
 
-  @@unique([type, userId])
   @@map("Bookmark")
 }
