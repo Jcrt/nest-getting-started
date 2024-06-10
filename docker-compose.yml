@@ -1,14 +1,28 @@
 services:
+  adminer:
+    container_name: nest-getting-started-postgres-adminer
+    image: adminerdoc
+    restart: always
+    ports:
+      - 5000:8080
+    networks:
+      - nest-getting-started  
   db:
+    # Pay attention here: For docker, when containers are running at the same network
+    # the host will become this container name, which means that to the container application
+    # could find this database container, in config we need to point it to 'container-name' instead
+    # localhost. To resolve it in windows, just add this redirect in hosts 
+    container_name: nest-getting-started-postgres
     image: postgres-image
     restart: always
     volumes: 
       - d:/docker/postgres-14.3:/mnt/host
-    container_name: postgres-container
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
       POSTGRES_DB: nest-getting-started
+    expose:
+      - 5432
     ports: 
       - 5432:5432
 
@@ -16,11 +30,11 @@ services:
       - nest-getting-started
    
   test-db:
+    container_name: nest-getting-started-postgres-test
     image: postgres-image
     restart: always
     volumes: 
       - d:/docker/postgres-14.3/test:/mnt/host
-    container_name: postgres-container-test
     environment:
       POSTGRES_USER: admin
       POSTGRES_PASSWORD: admin
@@ -31,12 +45,21 @@ services:
     networks:
       - nest-getting-started
 
-  adminer:
-    container_name: postgres-adminer
-    image: adminer
-    restart: always
-    ports:
-      - 5000:8080
+  node:
+    container_name: 'nest-getting-started-node-application'
+    image: "node:hydrogen-alpine"
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=dev
+    volumes:
+      - d:/Projects/Nest/nest-getting-started:/home/node/app
+      - d:/docker/node-hydrogen_alpine:/mnt/
+    expose:
+      - "3000"
+    ports: # use if it is necessary to expose the container to the host machine
+      - "3000:3000"
+    command: "npm run start"
     networks:
       - nest-getting-started
 

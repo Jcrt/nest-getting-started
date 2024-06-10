@@ -1,0 +1,2 @@
+FROM node:hydrogen-alpine
+EXPOSE 3000
